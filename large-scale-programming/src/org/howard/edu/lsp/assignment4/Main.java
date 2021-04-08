@@ -7,7 +7,7 @@ import org.howard.edu.lsp.assignment4.Integerset.Listemptyexception;
  * Each set can be found here as well
  */
 
-public class main {
+public class Main {
 
 	public static void main(String[] args) throws Listemptyexception {
 		// TODO Auto-generated method stub

@@ -8,24 +8,33 @@ import java.util.*;
 public class Integerset {
 	private ArrayList<Integer> set= new ArrayList<>();
 	  
-	   public Integerset(ArrayList list) {
+	   public Integerset(ArrayList<Integer> list) {
 	       this.set=list;
 	   }
 	  
 	  
 	  
-	//   clears the all representation of class
+	/**
+	 * clears the all representation of class
+	 */
 	   public void clear() {
 	       set.clear();
 	   }
 	  
-	//   returns the length of set
+	/**
+	 * returns the length of set
+	 * @return
+	 */
 	  
 	   public int length() {
 	       return set.size();
 	   }
 	  
-	//   return true if the 2 sets  are equal. false otherwise
+	/**
+	 * return true if the 2 sets  are equal. false otherwise
+	 * @param b
+	 * @return
+	 */
 	   public boolean equals(Integerset b) {
 	      
 	       ArrayList<Integer> list2=b.set;
@@ -51,11 +60,15 @@ public class Integerset {
 	      
 	   }
 	   
-	   class Listemptyexception extends Exception {
+	   public class Listemptyexception extends Exception {
 
 	   }
 	  
-	//   returns the largest number in the list and throws exception if the list is empty
+	/**
+	 * returns the largest number in the list and throws exception if the list is empty
+	 * @return
+	 * @throws Listemptyexception
+	 */
 	  
 	   public int largest() throws Listemptyexception {
 	      
@@ -76,7 +89,11 @@ public class Integerset {
 	      
 	   }
 	  
-	  //finds minimum value
+	  /**
+	   * finds minimum value
+	   * @return
+	   * @throws Listemptyexception
+	   */
 	   public int smallest() throws Listemptyexception {
 	      
 	       if(set.size()==0) {
@@ -97,7 +114,10 @@ public class Integerset {
 	   }
 	  
 
-	  //adds item to list
+	  /**
+	   * adds item to list
+	   * @param item
+	   */
 	  
 	   public void add(int item ) {
 	      
@@ -116,7 +136,10 @@ public class Integerset {
 	      
 	   }
 	  
-	//   removes item if it already exists in the list
+	/**
+	 * removes item if it already exists in the list
+	 * @param item
+	 */
 	  
 	   public void remove(int item ) {
 	      
@@ -146,7 +169,11 @@ public class Integerset {
 	       return list4;
 	      
 	   }
-	  //finds item in both lists that equal each other
+	  /**
+	   * finds item in both lists that equal each other
+	   * @param list2
+	   * @return
+	   */
 	   public Integerset intersect(Integerset list2) {
 	      
 	       ArrayList<Integer> temp=list2.getlist();
