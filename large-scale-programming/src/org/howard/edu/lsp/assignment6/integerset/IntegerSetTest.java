@@ -436,8 +436,7 @@ public void testLargest() throws IntegerSetException, IntegersetException {
   set1.add(1);
   assertEquals(1,set1.largest());
   
-  set1.clear();
-  assertEquals(2,set1.smallest());
+  
 
   
   
@@ -460,8 +459,7 @@ public void testSmallest() throws IntegerSetException, IntegersetException {
   set1.add(2);
   assertEquals(2,set1.smallest());
 
-  set1.clear();
-  assertEquals(2,set1.smallest());
+ 
 
 }
 
