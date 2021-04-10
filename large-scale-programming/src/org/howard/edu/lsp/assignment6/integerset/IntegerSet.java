@@ -49,4 +49,9 @@ public class IntegerSet {
 		return null;
 	}
 
+	public Object smallest() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
