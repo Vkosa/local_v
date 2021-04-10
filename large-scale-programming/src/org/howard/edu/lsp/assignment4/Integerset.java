@@ -1,205 +1,194 @@
-package org.howard.edu.lsp.assignment4;
-
-import java.util.*;
-
-/** this contains the Integerset class 
- * the class throws the Integerset and extends the exception class
- */
-public class Integerset {
-	private ArrayList<Integer> set= new ArrayList<>();
-	  
-	   public Integerset(ArrayList<Integer> list) {
-	       this.set=list;
-	   }
-	  
-	  
-	  
-	/**
-	 * clears the all representation of class
-	 */
-	   public void clear() {
-	       set.clear();
-	   }
-	  
-	/**
-	 * returns the length of set
-	 * @return
-	 */
-	  
-	   public int length() {
-	       return set.size();
-	   }
-	  
-	/**
-	 * return true if the 2 sets  are equal. false otherwise
-	 * @param b
-	 * @return
-	 */
-	   public boolean equals(Integerset b) {
-	      
-	       ArrayList<Integer> list2=b.set;
-	         
-	       if(set.size()!=list2.size()) {
-	           return false;
-	       }
-	         
-	       ArrayList<Integer> temp1=set;
-	         
-	       ArrayList<Integer> temp2=list2;
-	         
-	       Collections.sort(temp1);
-	       Collections.sort(temp2);
-	         
-	       for(int i=0;i<temp1.size();i++) {
-	           if(temp1.get(i)!=temp2.get(i)) {
-	               return false;
-	           }
-	       }
-	         
-	       return true;
-	      
-	   }
-	   
-	   public class Listemptyexception extends Exception {
-
-	   }
-	  
-	/**
-	 * returns the largest number in the list and throws exception if the list is empty
-	 * @return
-	 * @throws Listemptyexception
-	 */
-	  
-	   public int largest() throws Listemptyexception {
-	      
-	       if(set.size()==0) {
-	           Listemptyexception e= new Listemptyexception();
-	           throw e;
-	       }
-	      
-	       int max=0;
-	      
-	       for(int i=0;i<set.size();i++) {
-	           if(set.get(i)>max) {
-	               max=set.get(i);
-	           }
-	       }
-	      
-	       return max;
-	      
-	   }
-	  
-	  /**
-	   * finds minimum value
-	   * @return
-	   * @throws Listemptyexception
-	   */
-	   public int smallest() throws Listemptyexception {
-	      
-	       if(set.size()==0) {
-	           Listemptyexception e= new Listemptyexception();
-	           throw e;
-	       }
-	      
-	       int min=Integer.MAX_VALUE;
-	      
-	       for(int i=0;i<set.size();i++) {
-	           if(set.get(i)<min) {
-	               min=set.get(i);
-	           }
-	       }
-	      
-	       return min;
-	      
-	   }
-	  
-
-	  /**
-	   * adds item to list
-	   * @param item
-	   */
-	  
-	   public void add(int item ) {
-	      
-	       boolean exist=false;
-	      
-	       for(int i=0;i<set.size();i++) {
-	          
-	           if(set.get(i)==item) {
-	               exist=true;
-	           }
-	       }
-	      
-	       if(exist==false) {
-	           set.add(item);
-	       }
-	      
-	   }
-	  
-	/**
-	 * removes item if it already exists in the list
-	 * @param item
-	 */
-	  
-	   public void remove(int item ) {
-	      
-	      
-	      
-	       for(int i=0;i<set.size();i++) {
-	          
-	           if(set.get(i)==item) {
-	               set.remove(i);
-	           }
-	       }
-	      
-	   }
-	  
-	   public Integerset union(Integerset list2) {
-	      
-	       ArrayList<Integer> temp=list2.getlist();
-	      
-	       Set<Integer> set = new HashSet<>();
-	       set.addAll(set);
-	       set.addAll(temp);
-	      
-	       ArrayList<Integer> list3= new ArrayList<>(set);
-	      
-	       Integerset list4= new Integerset(list3);
-	      
-	       return list4;
-	      
-	   }
-	  /**
-	   * finds item in both lists that equal each other
-	   * @param list2
-	   * @return
-	   */
-	   public Integerset intersect(Integerset list2) {
-	      
-	       ArrayList<Integer> temp=list2.getlist();
-	      
-	       set.retainAll(temp);
-	      
-	       Integerset list4= new Integerset(set);
-	      
-	       return list4;
-	   }
-	  
-	   public Integerset difference (Integerset list2) {
-	      
-	       ArrayList<Integer> temp=list2.getlist();
-	      
-	       set.removeAll(temp);
-	      
-	       Integerset list4= new Integerset(set);
-	      
-	       return list4;
-	      
-	   }
-	  
-	   public ArrayList<Integer> getlist(){
-	       return set;
-	   }
 
 
-}
+ package org.howard.edu.lsp.assignment4;
+ import java.util.List;
+ import java.util.ArrayList;
+ import java.util.*;
+  
+ public class Integerset  {
+   // Hint: probably best to use an array list.  You will need to do a little research
+   private List<Integer> set = new ArrayList<Integer>();
+  
+  public Integerset(ArrayList list)
+  {
+    set=list;
+  }
+  
+   // Clears the internal representation of the set
+  public void clear()
+  {
+  for (int x=0; x<set.size(); x++)
+    {
+      set.clear();
+    }
+  }
+  
+  // Returns the length of the set
+  public int length() {
+     return set.size();
+  } // returns the length
+  
+  /*
+  * Returns true if the 2 sets are equal, false otherwise;
+  * Two sets are equal if they contain all of the same values in ANY order.
+  */
+  public boolean equals(Integerset b) {
+    int counter=0;
+    int z=b.length();
+    int Bigest;
+  
+    if(set.isEmpty() || b.isEmpty()||(set.size() != z))
+    {return false;}
+    else
+    {
+      Bigest= z;
+    }
+  
+     for (int y=0; y< Bigest; y++)
+    {
+     for (int x=0; x< Bigest; x++)
+     {
+       if (set.get(y)==b.GetFromPosition(x))
+       {
+     	counter++;
+       }
+      
+     }
+    }
+     return (Bigest==counter);
+   }
+  
+  // Returns true if the set contains the value, otherwise false
+  public boolean contains(int value) {
+  boolean test=false;
+  //for (int x: set)
+  for(int x=0; x< set.size(); x++)
+  {
+    if (value==set.get(x))
+    {test=true;}
+  }
+  return test;
+  }  
+  
+  public int GetFromPosition(int n)
+  {
+    return set.get(n);
+  }
+  
+  // Returns the largest item in the set; Throws a IntegersetException if the set is empty
+  public int largest() throws IntegersetException
+  {
+    if(set.isEmpty())
+    {
+      IntegersetException e= new IntegersetException("Empty set in largest");
+      throw e;
+    }
+     
+    int x=Integer.MIN_VALUE;
+   
+    for(int i=0; i< set.size(); i++)
+    {
+      if(set.get(i)>x)
+      {
+        x=set.get(i);
+      }
+    }
+     
+    return x;
+  }
+  
+  // Returns the smallest item in the set; Throws a IntegersetException if the set is empty
+  public int smallest() throws IntegersetException
+  {
+    if(set.isEmpty())
+    {
+      IntegersetException e= new IntegersetException("Empty set in smallest");
+      throw e;
+    }
+     
+    int x=Integer.MAX_VALUE;
+     
+    for(int i=0; i< set.size(); i++)
+    {
+      if(set.get(i)<x)
+      {
+        x=set.get(i);
+      }
+    }
+     
+    return x;
+  } // Adds an item to the set or does nothing it already there
+  
+  public void add(int item) {
+    if (!set.contains(item))
+    {set.add(item);}
+  }// adds item to s or does nothing if it is in set
+  
+  // Removes an item from the set or does nothing if not there
+  public void remove(int item) {
+    set.remove(item);
+  }
+  
+  public ArrayList<Integer> getSet()
+  {
+    return (ArrayList<Integer>) set;
+  }
+  
+  // Set union
+  public void union(Integerset intSetb) {
+    ArrayList<Integer> ListB=intSetb.getSet();
+     
+    Set<Integer> unifier = new HashSet<>();
+    unifier.addAll(set);
+    unifier.addAll(ListB);
+   
+    set= new ArrayList<>(unifier);
+  
+  }
+  
+  // Set intersection
+  public void intersect(Integerset intSetb)
+  {
+    ArrayList<Integer> ListB=intSetb.getSet();
+     
+    set.retainAll(ListB);
+   
+  }
+  
+  // Set difference, i.e., s1 –s2
+  public void diff(Integerset intSetb)
+  {
+    ArrayList<Integer> ListB=intSetb.getSet();
+     
+  
+    set.removeAll(ListB);
+  
+  }
+  
+  // Returns true if the set is empty, false otherwise
+  boolean isEmpty()
+  {
+     if(( set.size())==0)
+     {
+  	 return true;
+     }
+     else
+     { return false;}
+  }
+  
+  // Return String representation of your set
+  public String toString()
+  {
+    String output="";
+    for (int x=0; x< set.size(); x++)
+    {
+      output+=Integer.toString(set.get(x))+" ";
+    }
+   
+    return output;
+  } // return String representation of your set
+  
+ }
+
+
+

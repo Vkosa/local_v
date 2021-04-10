@@ -1,5 +1,7 @@
 package org.howard.edu.lsp.assignment6.integerset;
 
+import java.util.function.BooleanSupplier;
+
 public class IntegerSet {
 
 	public Integer length() {
@@ -40,6 +42,11 @@ public class IntegerSet {
 	public void union(IntegerSet set2) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public BooleanSupplier isEmpty() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
