@@ -123,14 +123,28 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName ("Test cases for throws exception")
+	public void testUnion_THROWS_EXCEPTION() {
+		IntegerSet Set1 = new IntegerSet();
+		IntegerSet Set2 = new IntegerSet();
+		
+		Exception exception = assertThrows(RuntimeException.class, () -> {
+			Set1.union(Set2);
+		});
+		
+		String expectedMessage = "Empty set in union";
+		String actualMessage = exception.getMessage();
+		
+		assertTrue(actualMessage.contains(expectedMessage));
+	}
+	
+	@Test
 	@DisplayName ("Test cases for union")
 	public void testUnion() {
 
 		IntegerSet set1 = new IntegerSet();
 		IntegerSet set2 = new IntegerSet();
-		
-
-		
+	
 		set1.add(1);
 		set1.add(2);
 		set1.add(3);
@@ -139,21 +153,11 @@ class IntegerSetTest {
 		set2.add(5);
 		set2.add(6);
 		
-		assertEquals (false, set1.equals(set2));
-		set1.clear();
-		set2.clear();
+		set1.union(set2);
 		
-		set1.add(2);
-		set1.add(3);
-	
-
-		set2.add(2);
-		set2.add(3);
-	
-		assertEquals (false, set1.equals(set2));
-		set1.clear();
-		set2.clear();
-		
+		System.out.println(set1.toString());
+		assertEquals("[1, 2, 3]", set1.toString());
+		assertNotEquals ("[3,2,1]", set1.toString());
 		
 	}
 	
@@ -168,12 +172,35 @@ class IntegerSetTest {
 		set2.add(7);
 		set2.add(2);
 		set2.add(4);
-		assertEquals(set1.equals(set2), false);
-			IntegerSet set11 = new IntegerSet ();
-			IntegerSet set12 = new IntegerSet ();
-
 		
+		System.out.println(set1.toString());
+
+		assertEquals("2", set1.toString());
+			
+
+	
 	}
+	
+	@Test
+	@DisplayName ("Test cases for intersect")
+	public void testIntersect1() {
+		
+		IntegerSet set11 = new IntegerSet();
+		set11.add(1);
+		set11.add(2);
+		set11.add(3);
+		IntegerSet set12 = new IntegerSet ();		
+		set12.add(7);
+		set12.add(9);
+		set12.add(3);
+		
+		System.out.println(set11.toString());
+		assertEquals("3", set11.toString());
+			
+
+	
+	}
+	
 	
 	@Test
 	@DisplayName ("Test cases for difference")

@@ -37,4 +37,9 @@ public class IntegerSet {
 		return 0;
 	}
 
+	public void union(IntegerSet set2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
